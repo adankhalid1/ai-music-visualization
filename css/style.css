@@ -1,0 +1,192 @@
+/* Base styles */
+:root {
+    --primary-color: #1a0029;
+    --secondary-color: #4b0082;
+    --accent-color: #FF4500;
+    --text-color: #ffffff;
+    --background-color: #0f0016;
+    --module-bg: #2c003e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ff6a33;
+}
+
+header {
+    text-align: center;
+    padding: 4rem 2rem 2rem;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 4rem;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+h2:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+pre {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+code {
+    font-family: monospace;
+    color: #aaaaff;
+    line-height: 1.4;
+}
+
+/* Visualization container */
+.visualization-container {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#audio-visualizer {
+    width: 100%;
+    height: 300px;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.song-info {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.8rem;
+    background-color: var(--module-bg);
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+/* Implementation modules */
+.module {
+    background-color: var(--module-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Roadmap */
+.roadmap ul {
+    list-style-type: none;
+}
+
+.roadmap li {
+    padding: 1rem;
+    border-left: 3px solid var(--accent-color);
+    background-color: rgba(44, 0, 62, 0.4);
+    margin-bottom: 1rem;
+    border-radius: 0 5px 5px 0;
+}
+
+.roadmap li strong {
+    color: var(--accent-color);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--primary-color);
+    margin-top: 3rem;
+}
+
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    margin: 0 0.5rem;
+    font-weight: 500;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    header {
+        padding: 3rem 1rem 1.5rem;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    main {
+        padding: 1.5rem;
+    }
+    
+    #audio-visualizer {
+        height: 200px;
+    }
+    
+    pre {
+        font-size: 0.9rem;
+    }
+} 

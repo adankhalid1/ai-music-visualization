@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Music Visualization</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>AI Music Visualization</h1>
+        <p class="subtitle">Machine learning-powered audio visual experience</p>
+    </header>
+    
+    <main>
+        <section class="visualization-container">
+            <h2>Interactive Demo</h2>
+            <div id="audio-visualizer">
+                <!-- Visualization will be added here by JavaScript -->
+            </div>
+            <div class="song-info">
+                The Weeknd - I Feel It Coming (Slowed & Reverb)
+            </div>
+        </section>
+        
+        <section class="explanation">
+            <h2>How The Visualization Works</h2>
+            <p>
+                This visualization uses mathematical sine waves to create the dynamic bars you see above.
+                Each bar's height is calculated using the current playback time to create wave-like motion.
+                The colors shift through the purple spectrum as the music plays, creating a visual representation
+                of the song's progression.
+            </p>
+            <p>
+                The full implementation of this project uses a neural network trained on music emotion recognition,
+                which analyzes audio in real-time to extract emotional characteristics. These emotional values
+                then drive parameters in the visualization, creating a visual representation of the music's emotional content.
+            </p>
+        </section>
+        
+        <section class="implementation">
+            <h2>Technical Implementation</h2>
+            
+            <div class="module">
+                <h3>Audio Analysis Module</h3>
+                <p>
+                    The audio analysis module processes the incoming audio stream using the Web Audio API.
+                    It extracts frequency data, dynamics, and temporal features that serve as inputs to the
+                    neural network model.
+                </p>
+                <pre><code>// Simplified audio analysis example
+const analyser = audioContext.createAnalyser();
+analyser.fftSize = 2048;
+const bufferLength = analyser.frequencyBinCount;
+const dataArray = new Uint8Array(bufferLength);
+
+function analyzeAudio() {
+    analyser.getByteFrequencyData(dataArray);
+    // Extract features from frequency data
+    return {
+        spectrum: normalizeSpectrum(dataArray),
+        dynamics: calculateDynamics(dataArray),
+        tempo: estimateTempo(dataArray)
+    };
+}</code></pre>
+            </div>
+            
+            <div class="module">
+                <h3>Emotion Recognition Model</h3>
+                <p>
+                    The neural network architecture includes recurrent layers (RNN) for capturing temporal
+                    aspects of music, convolutional layers for frequency pattern recognition, and dense layers
+                    for classification and feature extraction.
+                </p>
+                <pre><code>// Neural network model structure
+const model = tf.sequential();
+model.add(tf.layers.lstm({
+    units: 64,
+    returnSequences: true,
+    inputShape: [sequenceLength, featureCount]
+}));
+model.add(tf.layers.conv1d({
+    filters: 32,
+    kernelSize: 3,
+    activation: 'relu'
+}));
+model.add(tf.layers.globalMaxPooling1d());
+model.add(tf.layers.dense({
+    units: 64,
+    activation: 'relu'
+}));
+model.add(tf.layers.dense({
+    units: 4,
+    activation: 'softmax'
+}));</code></pre>
+            </div>
+            
+            <div class="module">
+                <h3>WebGL Visualization</h3>
+                <p>
+                    The visualization uses WebGL shaders to create dynamic visuals that respond to the
+                    emotional characteristics identified by the neural network. Different emotions are
+                    mapped to distinct visual patterns, colors, and movement styles.
+                </p>
+                <pre><code>// Fragment shader example
+uniform float joy;
+uniform float energy;
+uniform float tension;
+uniform float time;
+
+void main() {
+    // Position calculation with dynamic parameters
+    vec2 position = vUv * 2.0 - 1.0;
+    
+    // Dynamic pattern based on emotional values
+    float scale = 1.0 + joy * 0.5;
+    float speed = 0.2 + energy * 0.5;
+    float complexity = 2.0 + tension * 5.0;
+    
+    // Color calculation based on emotional values
+    vec3 color = calculateColor(position, joy, energy, tension);
+    
+    gl_FragColor = vec4(color, 1.0);
+}</code></pre>
+            </div>
+        </section>
+        
+        <section class="roadmap">
+            <h2>Development Roadmap</h2>
+            <ul>
+                <li>
+                    <strong>Phase 1 (Current):</strong> Time-based audio visualization using sine wave animations
+                </li>
+                <li>
+                    <strong>Phase 2:</strong> Implement real-time frequency analysis using the Web Audio API
+                </li>
+                <li>
+                    <strong>Phase 3:</strong> Develop and train the emotion recognition model using TensorFlow.js
+                </li>
+                <li>
+                    <strong>Phase 4:</strong> Create WebGL shader-based visualizations for different emotional characteristics
+                </li>
+                <li>
+                    <strong>Phase 5:</strong> Integrate all components into a cohesive system with user controls for customization
+                </li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Adan Khalid. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+            <a href="https://yourportfolio.com" target="_blank">Portfolio</a>
+        </div>
+    </footer>
+    
+    <script src="js/visualizer.js"></script>
+</body>
+</html> 
