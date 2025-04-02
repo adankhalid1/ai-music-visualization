@@ -177,6 +177,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-Adan Khalid - [your-email@example.com](mailto:your-email@example.com)
+Adan Khalid - [adan.khalid2005@gmail.com](mailto:adan.khalid2005@gmail.com)
 
-Project Link: [https://github.com/yourusername/ai-music-visualization](https://github.com/yourusername/ai-music-visualization) 
+Project Link: [https://github.com/adankhalid1/ai-music-visualization](https://github.com/adankhalid1/ai-music-visualization) 
